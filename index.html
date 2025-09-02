@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Void Todo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Inter:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="bg-grid"></div>
+    <header class="app-header">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">☍</div>
+        <h1>Void Todo</h1>
+      </div>
+      <nav class="header-actions">
+        <button id="newListBtn" class="btn ghost">New Page</button>
+        <a id="exportBtn" class="btn" href="#" download>Export CSV</a>
+        <label class="file-input btn ghost">
+          Import CSV
+          <input id="importInput" type="file" accept=".csv,text/csv" />
+        </label>
+      </nav>
+    </header>
+
+    <main class="layout">
+      <aside class="sidebar" id="listsSidebar" aria-label="Todo Pages"></aside>
+      <section class="content">
+        <header class="list-header">
+          <h2 id="listTitle">Loading…</h2>
+          <div class="list-tools">
+            <button id="renameListBtn" class="btn ghost xs">Rename</button>
+            <button id="deleteListBtn" class="btn danger xs">Delete</button>
+          </div>
+        </header>
+
+        <div class="add-todo">
+          <input
+            id="newTodoInput"
+            type="text"
+            placeholder="Type a task and hit Enter…"
+            autocomplete="off"
+          />
+          <button id="addTodoBtn" class="btn primary">Add</button>
+        </div>
+
+        <ul id="todos" class="todos" aria-live="polite"></ul>
+      </section>
+    </main>
+
+    <dialog id="newListDialog" class="modal">
+      <form method="dialog" class="modal-body" id="newListForm">
+        <h3>Create New Page</h3>
+        <input
+          id="newListName"
+          type="text"
+          placeholder="Page name…"
+          required
+          maxlength="60"
+        />
+        <div class="modal-actions">
+          <button value="cancel" class="btn ghost">Cancel</button>
+          <button value="default" class="btn primary" id="createListConfirm">
+            Create
+          </button>
+        </div>
+      </form>
+    </dialog>
+
+    <template id="todoItemTemplate">
+      <li class="todo-item">
+        <label class="todo-main">
+          <input type="checkbox" class="todo-check" />
+          <span class="todo-text"></span>
+        </label>
+        <div class="todo-actions">
+          <button class="btn done-btn" title="Mark as done/undone">Done</button>
+          <button class="icon-btn delete-btn" title="Delete">✕</button>
+        </div>
+      </li>
+    </template>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
